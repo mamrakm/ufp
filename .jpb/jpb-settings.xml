@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2024.
+  ~
+  ~ This file is part of UFP project. UFP is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
+  ~ as published by the Free Software Foundation either version 3 of the License, or (at your option) any later version.
+  ~ UFP is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR PARTICULAR PURPOSE.
+  ~ See the GNU General Public License for more details.
+  ~ You should have received a copy of the GNU General Public License along with UFP. If not, see <https://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<project version="4">
+  <component name="DatabaseMigrationSettings" lastSelectedDirectory="db/changelog/#date(&quot;yyyy&quot;)/#date(&quot;MM&quot;)" liquibaseFileType="YAML">
+    <database-infos>
+      <database-info>
+        <option name="enabled" value="true" />
+        <dbms-id>h2</dbms-id>
+      </database-info>
+    </database-infos>
+  </component>
+  <component name="PersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit name="Default" defaultIncludeChangeLogFile="src/main/resources/db/db.changelog-master.xml">
+        <packages>
+          <package value="cz.ememsoft.ufp" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>
