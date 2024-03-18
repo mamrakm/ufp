@@ -19,7 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class UfpApplication {
 
     public static void main(final String[] args) {
-		SpringApplication.run(UfpApplication.class, args);
-	}
+        SpringApplication.run(UfpApplication.class, args);
+    }
 
 }

@@ -16,12 +16,12 @@ import cz.ememsoft.ufp.dto.ThreadEntityDto;
 import cz.ememsoft.ufp.entity.ThreadEntity;
 import cz.ememsoft.ufp.mapper.ThreadMapper;
 import cz.ememsoft.ufp.repository.ThreadEntityRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 
-@AllArgsConstructor
-@Component
+@RequiredArgsConstructor
+@Service
 public class ThreadService {
 
     private final ThreadEntityRepository threadEntityRepository;
