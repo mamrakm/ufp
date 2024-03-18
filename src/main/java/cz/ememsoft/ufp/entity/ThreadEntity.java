@@ -30,7 +30,7 @@ import lombok.ToString;
 public class ThreadEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private Long id;
     private String threadName;
     private String threadDescription;

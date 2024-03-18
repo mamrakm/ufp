@@ -19,6 +19,8 @@ import cz.ememsoft.ufp.repository.ThreadEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @Service
@@ -27,9 +29,9 @@ public class ThreadService {
     private final ThreadEntityRepository threadEntityRepository;
     private final ThreadMapper threadMapper;
 
-    public void save(final ThreadEntityDto threadEntityDto) {
+    public ThreadEntity save(final ThreadEntityDto threadEntityDto) {
         final ThreadEntity thread = threadMapper.toEntity(threadEntityDto);
-        threadEntityRepository.save(thread);
+        return threadEntityRepository.save(thread);
     }
 
     public void delete(final ThreadEntityDto threadEntityDto) {
@@ -37,8 +39,10 @@ public class ThreadService {
         threadEntityRepository.delete(thread);
     }
 
-    public void findById(final Long id) {
-        threadEntityRepository.findById(id);
+    public ThreadEntityDto findById(final Long id) {
+        final Optional<ThreadEntity> threadEntity = threadEntityRepository.findById(id);
+        final var threadDto = threadEntity.map(threadMapper::toDto);
+        return threadDto.orElse(null);
     }
 
     public void findAll() {
