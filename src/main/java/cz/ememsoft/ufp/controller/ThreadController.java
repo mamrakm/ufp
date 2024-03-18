@@ -12,8 +12,8 @@
 
 package cz.ememsoft.ufp.controller;
 
-import cz.ememsoft.ufp.services.DatabaseService;
-import lombok.AllArgsConstructor;
+import cz.ememsoft.ufp.services.ThreadService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,13 +23,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/threads")
 public class ThreadController {
-    
-    private DatabaseService databaseService;
+    private final ThreadService threadService;
 
     @GetMapping("/{id}")
     public void getThreads(@PathVariable final int id) {
