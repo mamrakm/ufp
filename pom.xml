@@ -154,6 +154,11 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <scope>annotationProcessor</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.5.5.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -243,6 +248,23 @@
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                     <propertyFile>liquibase.properties</propertyFile>
                     <changeLogFile>./src/main/resources/db.changelog-master.xml</changeLogFile>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>1.5.2.Final</version>
+                        </path>
+                        <!-- other annotation processors -->
+                    </annotationProcessorPaths>
+                    <source>21</source> <!-- use your Java version here -->
+                    <target>21</target> <!-- use your Java version here -->
                 </configuration>
             </plugin>
         </plugins>
