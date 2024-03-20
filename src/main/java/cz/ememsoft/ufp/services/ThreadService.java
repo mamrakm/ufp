@@ -24,7 +24,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class ThreadService {
+public class ThreadService implements IService {
 
     private final ThreadEntityRepository threadEntityRepository;
     private final ThreadMapper threadMapper;
