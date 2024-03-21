@@ -1,0 +1,143 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1711021834679_1
+      author: EMeMSoft spol. s r.o.
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: board_entity_seq
+            startValue: 1
+  - changeSet:
+      id: 1711021834679_2
+      author: EMeMSoft spol. s r.o.
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: image_entity_seq
+            startValue: 1
+  - changeSet:
+      id: 1711021834679_3
+      author: EMeMSoft spol. s r.o.
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: post_entity_seq
+            startValue: 1
+  - changeSet:
+      id: 1711021834679_4
+      author: EMeMSoft spol. s r.o.
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_boardentity
+                  name: board_id
+                  type: BIGINT
+            tableName: board_entity
+  - changeSet:
+      id: 1711021834679_5
+      author: EMeMSoft spol. s r.o.
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_imageentity
+                  name: image_id
+                  type: BIGINT
+              - column:
+                  name: thread_id
+                  type: BIGINT
+            tableName: image_entity
+  - changeSet:
+      id: 1711021834679_6
+      author: EMeMSoft spol. s r.o.
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_postentity
+                  name: post_id
+                  type: BIGINT
+            tableName: post_entity
+  - changeSet:
+      id: 1711021834679_7
+      author: EMeMSoft spol. s r.o.
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_threadentity
+                  name: threadid
+                  type: BIGINT
+              - column:
+                  name: thread_id
+                  type: BIGINT
+              - column:
+                  name: thread_name
+                  type: VARCHAR(255)
+              - column:
+                  name: thread_description
+                  type: VARCHAR(255)
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: creator_userid
+                  type: BIGINT
+              - column:
+                  name: creation_timestamp
+                  type: DATETIME
+              - column:
+                  name: last_updated_timestamp
+                  type: DATETIME
+              - column:
+                  name: content
+                  type: CLOB
+              - column:
+                  name: sticky_flag
+                  type: BOOLEAN
+              - column:
+                  name: locked_flag
+                  type: BOOLEAN
+              - column:
+                  name: archive_flag
+                  type: BOOLEAN
+              - column:
+                  name: view_count
+                  type: INT
+              - column:
+                  name: boardid
+                  type: BIGINT
+            tableName: thread_entity
+  - changeSet:
+      id: 1711021834679_8
+      author: EMeMSoft spol. s r.o.
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: thread_id
+            baseTableName: image_entity
+            constraintName: FK_IMAGEENTITY_ON_THREAD
+            referencedColumnNames: threadid
+            referencedTableName: thread_entity
+
