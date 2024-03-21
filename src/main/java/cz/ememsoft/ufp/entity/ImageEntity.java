@@ -27,10 +27,10 @@ import lombok.ToString;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class BoardEntity {
+public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "board_id", nullable = false)
-    private Long boardId;
+    @Column(name = "image_id", nullable = false)
+    private Long imageId;
 
 }

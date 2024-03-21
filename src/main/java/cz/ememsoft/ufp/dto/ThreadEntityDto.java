@@ -22,7 +22,7 @@ import java.io.Serializable;
 
 @Data
 public class ThreadEntityDto implements Serializable {
-    private Long id;
+    private Long threadId;
     private String threadName;
     private String threadDescription;
 }
