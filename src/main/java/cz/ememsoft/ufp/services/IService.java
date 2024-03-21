@@ -12,5 +12,6 @@
 
 package cz.ememsoft.ufp.services;
 
-public interface IService {
+public interface IService<T, D> {
+    T save(D dto);
 }

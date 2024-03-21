@@ -10,14 +10,16 @@
  *
  */
 
-package cz.ememsoft.ufp.controller;
+package cz.ememsoft.ufp.services;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cz.ememsoft.ufp.dto.BoardEntityDto;
+import cz.ememsoft.ufp.entity.BoardEntity;
+import lombok.NonNull;
 
-@RequiredArgsConstructor
-@RestController
-@RequestMapping("/board")
-public class BoardController {
+public class BoardService implements IService<BoardEntity, BoardEntityDto> {
+
+    @Override
+    public BoardEntity save(@NonNull final BoardEntityDto boardEntityDto) {
+        return null;
+    }
 }

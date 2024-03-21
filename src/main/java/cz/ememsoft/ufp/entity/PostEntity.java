@@ -10,14 +10,7 @@
  *
  */
 
-package cz.ememsoft.ufp.controller;
+package cz.ememsoft.ufp.entity;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RequiredArgsConstructor
-@RestController
-@RequestMapping("/board")
-public class BoardController {
+public class PostEntity {
 }
