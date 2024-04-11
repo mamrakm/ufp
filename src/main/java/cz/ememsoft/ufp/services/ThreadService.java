@@ -15,7 +15,7 @@ package cz.ememsoft.ufp.services;
 import cz.ememsoft.ufp.dto.ThreadEntityDto;
 import cz.ememsoft.ufp.entity.ThreadEntity;
 import cz.ememsoft.ufp.mapper.ThreadMapper;
-import cz.ememsoft.ufp.repository.ThreadEntityRepository;
+import cz.ememsoft.ufp.repository.ThreadRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ import java.util.Optional;
 @Service
 public class ThreadService implements IService<ThreadEntity, ThreadEntityDto> {
 
-    private final ThreadEntityRepository threadEntityRepository;
+    private final ThreadRepository threadEntityRepository;
     private final ThreadMapper threadMapper;
 
     @Override

@@ -30,7 +30,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -68,9 +70,11 @@ public class ThreadEntity {
     // and linking them with a OneToMany or ManyToMany relationship
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "thread_id")
+    @ToString.Exclude
     private List<ImageEntity> images;
 
     @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
     private List<PostEntity> replies;
 
     private Boolean stickyFlag = false;
@@ -85,6 +89,9 @@ public class ThreadEntity {
     private Integer replyCount;
 
     private Long boardID;
+
+    @OneToMany(mappedBy = "threadEntity", orphanRemoval = true)
+    private Set<PostEntity> postEntities = new LinkedHashSet<>();
 
     // Additional fields like tags, IP address, etc., can be added here
 
