@@ -12,16 +12,32 @@
 
 package cz.ememsoft.ufp.services;
 
+import cz.ememsoft.ufp.api.response.ResponseCreateUser;
 import cz.ememsoft.ufp.dto.UserDto;
+import cz.ememsoft.ufp.mapper.UserMapper;
+import cz.ememsoft.ufp.repository.UserRepository;
+import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
+@RequiredArgsConstructor
 @Service
 public class UserService {
-    public static UserDto getUserById(final long id) {
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+
+    public static ResponseCreateUser getUserById(final long id) {
         return null;
     }
 
-    public void addUser(final UserDto user) {
+    public UserDto addUser(@NotNull final UserDto user) {
+        log.trace("entering addUser");
+        final var entity = userRepository.saveAndFlush(userMapper.toEntity(user));
+        log.info("User added");
+        log.trace("exiting addUser");
+        return userMapper.toDto(entity);
     }
 
 }

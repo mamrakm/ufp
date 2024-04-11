@@ -12,5 +12,8 @@
 
 package cz.ememsoft.ufp.dto;
 
+import lombok.Data;
+
+@Data
 public class PostEntityDto {
 }

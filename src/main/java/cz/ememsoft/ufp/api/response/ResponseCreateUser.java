@@ -10,16 +10,13 @@
  *
  */
 
-package cz.ememsoft.ufp.api;
+package cz.ememsoft.ufp.api.response;
 
-public class CreateUserRequest {
-    String userAccountName;
-    String userDisplayName;
-    String password;
-    String email;
-    String city;
-    String country;
-    String role;
-    String status;
+import lombok.Data;
 
+@Data
+public class ResponseCreateUser {
+    private long id;
+    private String role;
+    private String message;
 }

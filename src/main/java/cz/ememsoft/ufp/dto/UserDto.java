@@ -12,5 +12,34 @@
 
 package cz.ememsoft.ufp.dto;
 
+import lombok.Data;
+
+import java.time.LocalDate;
+
+@Data
 public class UserDto {
+    long id;
+
+    private String userAccountName;
+
+    private String userDisplayName;
+
+    private String password;
+
+    private String email;
+
+
+    private String city;
+
+    private String country;
+
+    private String role;
+
+    private String status;
+
+    private LocalDate creationDate;
+
+    private LocalDate creationTimestamp;
+
+    private LocalDate lastUpdatedTimestamp;
 }

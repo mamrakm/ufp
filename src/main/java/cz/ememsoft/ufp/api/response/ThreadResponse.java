@@ -10,10 +10,7 @@
  *
  */
 
-package cz.ememsoft.ufp.api;
+package cz.ememsoft.ufp.api.response;
 
-public class ResponseCreateUser {
-    int id;
-    String role;
-    String message;
+public class ThreadResponse {
 }

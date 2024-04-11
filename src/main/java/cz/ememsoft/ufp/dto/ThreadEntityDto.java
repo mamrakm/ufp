@@ -16,10 +16,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * DTO for {@link cz.ememsoft.ufp.entity.ThreadEntity}
- */
-
 @Data
 public class ThreadEntityDto implements Serializable {
     private Long threadId;

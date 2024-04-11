@@ -18,25 +18,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
-import lombok.Getter;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 @Entity
 public class ThreadEntity {
@@ -50,30 +46,23 @@ public class ThreadEntity {
     @Column(nullable = false)
     private Long threadID;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String title;
 
     // Assuming the user's identity is stored in a User entity
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Long creatorUserID;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date creationTimestamp;
+    private LocalDate creationTimestamp;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdatedTimestamp;
+    private LocalDate lastUpdatedTimestamp;
 
     @Lob
     private String content;
 
-    // This assumes you're storing image paths or identifiers in a separate table
-    // and linking them with a OneToMany or ManyToMany relationship
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "thread_id")
-    @ToString.Exclude
-    private List<ImageEntity> images;
-
-    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "threadEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private List<PostEntity> replies;
 
@@ -92,9 +81,4 @@ public class ThreadEntity {
 
     @OneToMany(mappedBy = "threadEntity", orphanRemoval = true)
     private Set<PostEntity> postEntities = new LinkedHashSet<>();
-
-    // Additional fields like tags, IP address, etc., can be added here
-
-    // Constructors, getters, and setters go here
-
 }

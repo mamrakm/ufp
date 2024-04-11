@@ -10,7 +10,41 @@
  *
  */
 
-package cz.ememsoft.ufp.api;
+package cz.ememsoft.ufp.api.request;
 
-public class ThreadResponse {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+import java.time.LocalDate;
+
+@Data
+public class CreateUserRequest {
+    @NotBlank
+    private String userAccountName;
+
+    @NotBlank
+    private String userDisplayName;
+
+    @NotBlank
+    private String password;
+
+    @NotBlank
+    @Email
+    private String email;
+
+    private String city;
+
+    private String country;
+
+    private String role;
+
+    private String status;
+
+    private LocalDate creationDate;
+
+    private LocalDate creationTimestamp;
+
+    private LocalDate lastUpdatedTimestamp;
+
 }

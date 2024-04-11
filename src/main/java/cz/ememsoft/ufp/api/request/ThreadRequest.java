@@ -10,7 +10,7 @@
  *
  */
 
-package cz.ememsoft.ufp.api;
+package cz.ememsoft.ufp.api.request;
 
 public class ThreadRequest {
 }
