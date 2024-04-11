@@ -12,7 +12,19 @@
 
 package cz.ememsoft.ufp.entity;
 
-public enum RolesEnum {
-    ROLE_USER, ROLE_ADMIN, ROLE_JANITOR, ROLE_SUPER_ADMIN, ROLE_LOGGED_USER, ROLE_UNLOGGED_USER
-    
+import cz.ememsoft.ufp.dto.ThreadEntityDto;
+import org.mapstruct.BeanMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.ReportingPolicy;
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+public interface ThreadEntityMapper {
+    ThreadEntity toEntity(ThreadEntityDto threadEntityDto);
+
+    ThreadEntityDto toDto(ThreadEntity threadEntity);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    ThreadEntity partialUpdate(ThreadEntityDto threadEntityDto, @MappingTarget ThreadEntity threadEntity);
 }

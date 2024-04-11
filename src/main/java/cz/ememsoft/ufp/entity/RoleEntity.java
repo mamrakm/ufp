@@ -12,6 +12,8 @@
 
 package cz.ememsoft.ufp.entity;
 
+import cz.ememsoft.ufp.enums.RolesEnum;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,12 +24,17 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "board")
-public final class BoardEntity {
+@Table(name = "role_entity")
+public final class RoleEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "board_sequence")
-    @SequenceGenerator(name = "board_sequence", sequenceName = "board_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "role_entity_sequence")
+    @SequenceGenerator(name = "role_entity_sequence", sequenceName = "role_entity_sequence", allocationSize = 1, initialValue = 1)
+    @Column(name = "id", nullable = false)
     private Long id;
-    private Long boardId;
+
+    @Column(name = "role", nullable = false, length = 50)
+    private RolesEnum role;
+
 
 }

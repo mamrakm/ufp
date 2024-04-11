@@ -10,7 +10,7 @@
  *
  */
 
-package org.springframework.cloud.contract.stubrunner.server;
+package cz.ememsoft.ufp.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,14 +23,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "role_entity")
-public final class RoleEntity {
-
+@Table(name = "password")
+public class PasswordEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "role_entity_sequence")
-    @SequenceGenerator(name = "role_entity_sequence" , sequenceName = "role_entity_sequence" , allocationSize = 1, initialValue = 1)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "password_sequence")
+    @SequenceGenerator(name = "password_sequence", sequenceName = "password_sequence", allocationSize = 1, initialValue = 1)
     private Long id;
 
-
+    @Column(name = "password", nullable = false)
+    private String password;
 }

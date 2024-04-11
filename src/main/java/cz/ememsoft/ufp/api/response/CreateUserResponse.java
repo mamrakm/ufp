@@ -10,16 +10,13 @@
  *
  */
 
-package cz.ememsoft.ufp.dto;
+package cz.ememsoft.ufp.api.response;
 
-import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
-import java.io.Serializable;
-
-/**
- * DTO for {@link cz.ememsoft.ufp.entity.UserEntity}
- */
-public record UserEntityDto(@NotNull Long id, NameEntityDto name, PasswordEntityDto password, EmailEntityDto email,
-                            DateEntityDto dates, String city, String country, String role,
-                            String status) implements Serializable {
+@Data
+public class CreateUserResponse {
+    private long id;
+    private String role;
+    private String message;
 }

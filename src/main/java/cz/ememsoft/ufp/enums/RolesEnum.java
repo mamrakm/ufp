@@ -10,16 +10,9 @@
  *
  */
 
-package cz.ememsoft.ufp.dto;
+package cz.ememsoft.ufp.enums;
 
-import jakarta.validation.constraints.NotNull;
+public enum RolesEnum {
+    ROLE_USER, ROLE_ADMIN, ROLE_JANITOR, ROLE_SUPER_ADMIN, ROLE_LOGGED_USER, ROLE_UNLOGGED_USER
 
-import java.io.Serializable;
-
-/**
- * DTO for {@link cz.ememsoft.ufp.entity.UserEntity}
- */
-public record UserEntityDto(@NotNull Long id, NameEntityDto name, PasswordEntityDto password, EmailEntityDto email,
-                            DateEntityDto dates, String city, String country, String role,
-                            String status) implements Serializable {
 }

@@ -20,13 +20,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Data
 @Entity
+@Table(name = "post")
 public final class PostEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_sequence")
+    @SequenceGenerator(name = "post_sequence", sequenceName = "post_sequence", allocationSize = 1, initialValue = 1)
+    private Long id;
     @Column(name = "post_id", nullable = false)
     private Long postId;
 

@@ -12,7 +12,7 @@
 
 package cz.ememsoft.ufp.services;
 
-import cz.ememsoft.ufp.api.response.ResponseCreateUser;
+import cz.ememsoft.ufp.api.response.CreateUserResponse;
 import cz.ememsoft.ufp.controller.UserController;
 import cz.ememsoft.ufp.dto.UserEntityDto;
 import cz.ememsoft.ufp.mapper.UserMapper;
@@ -30,7 +30,7 @@ public class UserService {
     private final UserMapper userMapper;
     private final UserController user;
 
-    public static ResponseCreateUser getUserById(final long id) {
+    public static CreateUserResponse getUserById(final long id) {
         return null;
     }
 

@@ -13,7 +13,7 @@
 package cz.ememsoft.ufp.controller;
 
 import cz.ememsoft.ufp.api.request.CreateUserRequest;
-import cz.ememsoft.ufp.api.response.ResponseCreateUser;
+import cz.ememsoft.ufp.api.response.CreateUserResponse;
 import cz.ememsoft.ufp.dto.UserEntityDto;
 import cz.ememsoft.ufp.exceptions.InternalException;
 import cz.ememsoft.ufp.mapper.UserMapper;
@@ -38,7 +38,7 @@ public class UserController {
     private final UserMapper userMapper;
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public static ResponseEntity<ResponseCreateUser> getUserById(@Positive @PathVariable final Long id) {
+    public static ResponseEntity<CreateUserResponse> getUserById(@Positive @PathVariable final Long id) {
         log.trace("entering getUserById");
         if (null == id) {
             log.error("Id is null", new InternalException());
@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<ResponseCreateUser> putUserById(@PathVariable final Long id, @RequestBody final CreateUserRequest userRequest) {
+    public ResponseEntity<CreateUserResponse> putUserById(@PathVariable final Long id, @RequestBody final CreateUserRequest userRequest) {
         log.trace("entering putUserById");
         if (null == userRequest) {
             log.error("UserRequest is null", new InternalException());
@@ -65,7 +65,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/add", produces = "application/json")
-    public ResponseEntity<ResponseCreateUser> addUser(@Valid @RequestBody final CreateUserRequest createUserRequest) {
+    public ResponseEntity<CreateUserResponse> addUser(@Valid @RequestBody final CreateUserRequest createUserRequest) {
         log.trace("entering addUser");
         if (null == createUserRequest) {
             log.error("CreateUserRequest is null", new InternalException());
@@ -73,7 +73,7 @@ public class UserController {
         } else {
             final UserEntityDto userEntityDto = userService.addUser(userMapper.userRequestToUserDto(createUserRequest));
             log.info("User added");
-            final var userResponse = new ResponseCreateUser();
+            final var userResponse = new CreateUserResponse();
             userResponse.setId(userEntityDto.id());
             userResponse.setRole(userEntityDto.role());
             userResponse.setMessage("");

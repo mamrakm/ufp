@@ -12,10 +12,33 @@
 
 package cz.ememsoft.ufp.dto;
 
-import java.io.Serializable;
+import cz.ememsoft.ufp.entity.PostEntity;
+import cz.ememsoft.ufp.entity.ThreadEntity;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
-public record ThreadEntityDto(Long threadId,
-                              String threadName,
-                              String threadDescription) implements Serializable {
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * DTO for {@link ThreadEntity}
+ */
+public record ThreadEntityDto(@NotNull @Digits(integer = 0, fraction = 0) @Positive Long threadId,
+                              @NotNull @Digits(integer = 0, fraction = 0) @NotEmpty @NotBlank String threadName,
+                              @NotNull String threadDescription,
+                              @NotNull @Digits(integer = 0, fraction = 0) @Positive Long id, Long threadID,
+                              String title, Long creatorUserID,
+                              LocalDate creationTimestamp, LocalDate lastUpdatedTimestamp, String content,
+                              List<PostEntityDto> replies, Boolean stickyFlag, Boolean lockedFlag, Boolean archiveFlag,
+                              Integer viewCount, @NotNull @Digits(integer = 0, fraction = 0) @Positive Long boardID,
+                              Set<cz.ememsoft.ufp.dto.PostEntityDto> postEntities) implements Serializable {
+    /**
+     * DTO for {@link PostEntity}
+     */
 
 }

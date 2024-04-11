@@ -12,6 +12,7 @@
 
 package cz.ememsoft.ufp.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,14 +21,23 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 @Entity
-@Table(name = "board")
-public final class BoardEntity {
+@Table(name = "date")
+public class DateEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "board_sequence")
-    @SequenceGenerator(name = "board_sequence", sequenceName = "board_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "date_sequence")
+    @SequenceGenerator(name = "date_sequence", sequenceName = "date_sequence", allocationSize = 1)
     private Long id;
-    private Long boardId;
 
+    @Column(name = "creation-date", nullable = false)
+    private LocalDate creationDate;
+
+    @Column(name = "creation-timestamp", nullable = false)
+    private LocalDate creationTimestamp;
+
+    @Column(name = "last-updated-date", nullable = false)
+    private LocalDate lastUpdatedTimestamp;
 }

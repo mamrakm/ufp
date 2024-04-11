@@ -12,7 +12,14 @@
 
 package cz.ememsoft.ufp.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.io.Serializable;
 
-public record PostEntityDto() implements Serializable {
+/**
+ * DTO for {@link cz.ememsoft.ufp.entity.PostEntity}
+ */
+public record PostEntityDto(@NotNull @Positive Long id, @NotNull @Positive Long postId, ThreadEntityDto threadEntity,
+                            byte[] image) implements Serializable {
 }

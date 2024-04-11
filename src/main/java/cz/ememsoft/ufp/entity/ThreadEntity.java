@@ -37,7 +37,7 @@ import java.util.Set;
 @Data
 @RequiredArgsConstructor
 @Entity
-@Table(name = "thread_entity")
+@Table(name = "thread")
 public final class ThreadEntity {
     private Long threadId;
     private String threadName;
@@ -45,8 +45,9 @@ public final class ThreadEntity {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "thread_entity_sequence")
-    @SequenceGenerator(name = "thread_entity_sequence", sequenceName = "thread_entity_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "thread_sequence")
+    @SequenceGenerator(name = "thread_sequence", sequenceName = "thread_sequence", allocationSize = 1, initialValue = 1)
+    private Long id;
 
     @Column(nullable = false)
     private Long threadID;

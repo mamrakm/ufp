@@ -12,6 +12,7 @@
 
 package cz.ememsoft.ufp.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,12 +23,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "board")
-public final class BoardEntity {
+@Table(name = "email")
+public class EmailEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "board_sequence")
-    @SequenceGenerator(name = "board_sequence", sequenceName = "board_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "email_sequence")
+    @SequenceGenerator(name = "email_sequence", sequenceName = "email_sequence", allocationSize = 1, initialValue = 1)
     private Long id;
-    private Long boardId;
 
+    @Column(name = "email", nullable = false)
+    private String email;
 }

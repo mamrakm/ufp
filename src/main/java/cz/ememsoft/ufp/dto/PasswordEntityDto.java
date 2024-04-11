@@ -12,14 +12,15 @@
 
 package cz.ememsoft.ufp.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 
 /**
- * DTO for {@link cz.ememsoft.ufp.entity.UserEntity}
+ * DTO for {@link cz.ememsoft.ufp.entity.PasswordEntity}
  */
-public record UserEntityDto(@NotNull Long id, NameEntityDto name, PasswordEntityDto password, EmailEntityDto email,
-                            DateEntityDto dates, String city, String country, String role,
-                            String status) implements Serializable {
+public record PasswordEntityDto(@NotNull Long id,
+                                @NotNull @NotEmpty @NotBlank String password) implements Serializable {
 }
