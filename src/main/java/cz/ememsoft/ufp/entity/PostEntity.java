@@ -17,6 +17,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -32,5 +35,13 @@ public class PostEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "post_id", nullable = false)
     private Long postId;
+
+    @ManyToOne
+    @JoinColumn(name = "thread_entity_threadid")
+    private ThreadEntity threadEntity;
+
+    @Lob
+    @Column(name = "image", columnDefinition = "BLOB")
+    private byte[] image;
 
 }
