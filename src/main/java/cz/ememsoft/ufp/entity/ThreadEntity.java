@@ -22,9 +22,6 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -39,15 +36,15 @@ import java.util.Set;
 @Entity
 @Table(name = "thread")
 public final class ThreadEntity {
-    private Long threadId;
-    private String threadName;
-    private String threadDescription;
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "thread_sequence")
     @SequenceGenerator(name = "thread_sequence", sequenceName = "thread_sequence", allocationSize = 1, initialValue = 1)
     private Long id;
+
+    @Column(nullable = false)
+    private String threadName;
 
     @Column(nullable = false)
     private Long threadID;
@@ -59,10 +56,8 @@ public final class ThreadEntity {
     @Column(nullable = false)
     private Long creatorUserID;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDate creationTimestamp;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDate lastUpdatedTimestamp;
 
     @Lob
@@ -80,7 +75,6 @@ public final class ThreadEntity {
 
     private Integer viewCount = 0;
 
-    @Transient // Not stored in DB directly, computed from replies size
     private Integer replyCount;
 
     private Long boardID;

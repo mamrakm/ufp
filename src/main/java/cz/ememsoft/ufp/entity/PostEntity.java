@@ -46,5 +46,4 @@ public final class PostEntity {
     @Lob
     @Column(name = "image", columnDefinition = "BLOB")
     private byte[] image;
-
 }

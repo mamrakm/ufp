@@ -17,6 +17,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -40,4 +41,7 @@ public class DateEntity {
 
     @Column(name = "last-updated-date", nullable = false)
     private LocalDate lastUpdatedTimestamp;
+
+    @OneToOne(mappedBy = "dates")
+    private UserEntity userEntity;
 }

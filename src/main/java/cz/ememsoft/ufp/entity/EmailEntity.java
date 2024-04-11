@@ -17,6 +17,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -32,4 +33,7 @@ public class EmailEntity {
 
     @Column(name = "email", nullable = false)
     private String email;
+
+    @OneToOne(mappedBy = "email")
+    private UserEntity userEntity;
 }
