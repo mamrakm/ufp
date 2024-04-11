@@ -15,5 +15,5 @@ package cz.ememsoft.ufp.exceptions;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR)
-public class ServiceException extends RuntimeException {
+public class InternalErrorException extends RuntimeException {
 }
