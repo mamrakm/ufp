@@ -14,7 +14,7 @@ package cz.ememsoft.ufp.mapper;
 
 import cz.ememsoft.ufp.api.request.CreateUserRequest;
 import cz.ememsoft.ufp.api.response.ResponseCreateUser;
-import cz.ememsoft.ufp.dto.UserDto;
+import cz.ememsoft.ufp.dto.UserEntityDto;
 import cz.ememsoft.ufp.entity.UserEntity;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
@@ -24,14 +24,14 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserMapper {
-    UserDto userRequestToUserDto(CreateUserRequest userRequest);
+    UserEntityDto userRequestToUserDto(CreateUserRequest userRequest);
 
-    UserDto toDto(UserEntity userEntity);
+    UserEntityDto toDto(UserEntity userEntity);
 
-    UserEntity toEntity(UserDto userDto);
+    UserEntity toEntity(UserEntityDto userEntityDto);
 
-    ResponseCreateUser userDtoToResponseCreateUser(UserDto userDto);
+    ResponseCreateUser userDtoToResponseCreateUser(UserEntityDto userEntityDto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    UserEntity partialUpdate(UserDto userDto, @MappingTarget UserEntity userEntity);
+    UserEntity partialUpdate(UserEntityDto userEntityDto, @MappingTarget UserEntity userEntity);
 }

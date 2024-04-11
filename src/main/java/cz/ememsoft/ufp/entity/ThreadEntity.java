@@ -20,6 +20,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
@@ -35,14 +37,17 @@ import java.util.Set;
 @Data
 @RequiredArgsConstructor
 @Entity
-public class ThreadEntity {
+@Table(name = "thread_entity")
+public final class ThreadEntity {
     private Long threadId;
     private String threadName;
     private String threadDescription;
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "thread_entity_sequence")
+    @SequenceGenerator(name = "thread_entity_sequence", sequenceName = "thread_entity_sequence", allocationSize = 1, initialValue = 1)
+
     @Column(nullable = false)
     private Long threadID;
 

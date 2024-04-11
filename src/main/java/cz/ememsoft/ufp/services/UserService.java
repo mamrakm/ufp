@@ -14,7 +14,7 @@ package cz.ememsoft.ufp.services;
 
 import cz.ememsoft.ufp.api.response.ResponseCreateUser;
 import cz.ememsoft.ufp.controller.UserController;
-import cz.ememsoft.ufp.dto.UserDto;
+import cz.ememsoft.ufp.dto.UserEntityDto;
 import cz.ememsoft.ufp.mapper.UserMapper;
 import cz.ememsoft.ufp.repository.UserRepository;
 import jakarta.validation.constraints.NotNull;
@@ -34,7 +34,7 @@ public class UserService {
         return null;
     }
 
-    public UserDto addUser(@NotNull final UserDto user) {
+    public UserEntityDto addUser(@NotNull final UserEntityDto user) {
         log.trace("entering addUser");
         final var entity = userRepository.saveAndFlush(userMapper.toEntity(user));
         log.info("User added");
@@ -42,12 +42,12 @@ public class UserService {
         return userMapper.toDto(entity);
     }
 
-    public UserDto updateUser(@NotNull final long id, final UserDto userDto) {
+    public UserEntityDto updateUser(@NotNull final long id, final UserEntityDto userEntityDto) {
         log.trace("entering updateUser");
         final var entity = userRepository.findById(id);
         if (entity.isPresent()) {
             entity.get().setId(id);
-            userRepository.saveAndFlush(userMapper.toEntity(userDto));
+            userRepository.saveAndFlush(userMapper.toEntity(userEntityDto));
             log.info("User updated");
             log.trace("exiting updateUser");
             return userMapper.toDto(entity.get());

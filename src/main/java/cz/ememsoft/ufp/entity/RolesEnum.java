@@ -12,21 +12,7 @@
 
 package cz.ememsoft.ufp.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
-
-@Data
-@Entity
-@Table(name = "board_entity")
-public final class BoardEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "board_id", nullable = false)
-    private Long boardId;
-
+public enum RolesEnum {
+    ROLE_USER, ROLE_ADMIN, ROLE_JANITOR, ROLE_SUPER_ADMIN, ROLE_LOGGED_USER, ROLE_UNLOGGED_USER
+    
 }

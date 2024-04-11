@@ -18,7 +18,7 @@ import java.time.LocalDate;
 /**
  * DTO for {@link cz.ememsoft.ufp.entity.UserEntity}
  */
-public record UserDto(long id, String userAccountName, String userDisplayName, String password, String email,
-                      String city, String country, String role, String status, LocalDate creationDate,
-                      LocalDate creationTimestamp, LocalDate lastUpdatedTimestamp) implements Serializable {
+public record UserEntityDto(long id, String userAccountName, String userDisplayName, String password, String email,
+                            String city, String country, String role, String status, LocalDate creationDate,
+                            LocalDate creationTimestamp, LocalDate lastUpdatedTimestamp) implements Serializable {
 }

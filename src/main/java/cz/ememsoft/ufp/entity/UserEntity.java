@@ -12,19 +12,21 @@
 
 package cz.ememsoft.ufp.entity;
 
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Data
 @Entity
+@Table(name = "user_entity")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -43,27 +45,31 @@ public class UserEntity {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "country")
-    private String country;
-
-    @Column(name = "role", nullable = false)
-    private String role;
-
-    @Column(name = "status")
-    private String status;
-
     @Column(name = "creation-date", nullable = false)
     private LocalDate creationDate;
 
     @Column(name = "creation-timestamp", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDate creationTimestamp;
 
     @Column(name = "last-updated-date", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDate lastUpdatedTimestamp;
+
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "city")
+    private String city;
+
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "country")
+    private String country;
+
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "role", nullable = false)
+    private String role;
+
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "status")
+    private String status;
+
+
 
 }

@@ -14,7 +14,7 @@ package cz.ememsoft.ufp.controller;
 
 import cz.ememsoft.ufp.api.request.CreateUserRequest;
 import cz.ememsoft.ufp.api.response.ResponseCreateUser;
-import cz.ememsoft.ufp.dto.UserDto;
+import cz.ememsoft.ufp.dto.UserEntityDto;
 import cz.ememsoft.ufp.exceptions.InternalException;
 import cz.ememsoft.ufp.mapper.UserMapper;
 import cz.ememsoft.ufp.services.UserService;
@@ -71,11 +71,11 @@ public class UserController {
             log.error("CreateUserRequest is null", new InternalException());
             return ResponseEntity.badRequest().build();
         } else {
-            final UserDto userDto = userService.addUser(userMapper.userRequestToUserDto(createUserRequest));
+            final UserEntityDto userEntityDto = userService.addUser(userMapper.userRequestToUserDto(createUserRequest));
             log.info("User added");
             final var userResponse = new ResponseCreateUser();
-            userResponse.setId(userDto.id());
-            userResponse.setRole(userDto.role());
+            userResponse.setId(userEntityDto.id());
+            userResponse.setRole(userEntityDto.role());
             userResponse.setMessage("");
             log.debug("User added: {}", userResponse);
             log.trace("exiting addUser");
