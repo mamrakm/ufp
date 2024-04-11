@@ -12,13 +12,10 @@
 
 package cz.ememsoft.ufp.dto;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
-@Data
-public class ThreadEntityDto implements Serializable {
-    private Long threadId;
-    private String threadName;
-    private String threadDescription;
+public record ThreadEntityDto(Long threadId,
+                              String threadName,
+                              String threadDescription) implements Serializable {
+
 }

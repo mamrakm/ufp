@@ -13,6 +13,7 @@
 package cz.ememsoft.ufp.services;
 
 import cz.ememsoft.ufp.api.response.ResponseCreateUser;
+import cz.ememsoft.ufp.controller.UserController;
 import cz.ememsoft.ufp.dto.UserDto;
 import cz.ememsoft.ufp.mapper.UserMapper;
 import cz.ememsoft.ufp.repository.UserRepository;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final UserController user;
 
     public static ResponseCreateUser getUserById(final long id) {
         return null;
@@ -38,6 +40,19 @@ public class UserService {
         log.info("User added");
         log.trace("exiting addUser");
         return userMapper.toDto(entity);
+    }
+
+    public UserDto updateUser(@NotNull final long id, final UserDto userDto) {
+        log.trace("entering updateUser");
+        final var entity = userRepository.findById(id);
+        if (entity.isPresent()) {
+            entity.get().setId(id);
+            userRepository.saveAndFlush(userMapper.toEntity(userDto));
+            log.info("User updated");
+            log.trace("exiting updateUser");
+            return userMapper.toDto(entity.get());
+        }
+        return null;
     }
 
 }

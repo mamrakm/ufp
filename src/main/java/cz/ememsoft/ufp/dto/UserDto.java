@@ -12,34 +12,13 @@
 
 package cz.ememsoft.ufp.dto;
 
-import lombok.Data;
-
+import java.io.Serializable;
 import java.time.LocalDate;
 
-@Data
-public class UserDto {
-    long id;
-
-    private String userAccountName;
-
-    private String userDisplayName;
-
-    private String password;
-
-    private String email;
-
-
-    private String city;
-
-    private String country;
-
-    private String role;
-
-    private String status;
-
-    private LocalDate creationDate;
-
-    private LocalDate creationTimestamp;
-
-    private LocalDate lastUpdatedTimestamp;
+/**
+ * DTO for {@link cz.ememsoft.ufp.entity.UserEntity}
+ */
+public record UserDto(long id, String userAccountName, String userDisplayName, String password, String email,
+                      String city, String country, String role, String status, LocalDate creationDate,
+                      LocalDate creationTimestamp, LocalDate lastUpdatedTimestamp) implements Serializable {
 }

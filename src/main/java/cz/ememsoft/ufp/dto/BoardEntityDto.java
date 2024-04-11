@@ -12,8 +12,7 @@
 
 package cz.ememsoft.ufp.dto;
 
-import lombok.Data;
+import java.io.Serializable;
 
-@Data
-public class BoardEntityDto {
+public record BoardEntityDto() implements Serializable {
 }

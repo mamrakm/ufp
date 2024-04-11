@@ -10,9 +10,11 @@
  *
  */
 
-package cz.ememsoft.ufp.dto;
+package cz.ememsoft.ufp.exceptions;
 
-import java.io.Serializable;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-public record PostEntityDto() implements Serializable {
+@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+public class InternalException extends RuntimeException {
 }
