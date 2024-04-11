@@ -14,5 +14,5 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <includeAll path="db/changelog/2024/03"/>
+    <includeAll path="db/changelog />
 </databaseChangeLog>
