@@ -12,13 +12,14 @@
 
 package cz.ememsoft.ufp.mapper;
 
+import cz.ememsoft.ufp.api.CreateUserRequest;
 import cz.ememsoft.ufp.dto.UserDto;
 import cz.ememsoft.ufp.entity.UserEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-    UserDto toDto(UserEntity userEntity);
+    UserDto toDto(CreateUserRequest userEntity);
 
     UserEntity toEntity(UserDto userDto);
 

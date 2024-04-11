@@ -12,5 +12,8 @@
 
 package cz.ememsoft.ufp.api;
 
-public class UserRequest {
+public class ResponseCreateUser {
+    int id;
+    String role;
+    String message;
 }

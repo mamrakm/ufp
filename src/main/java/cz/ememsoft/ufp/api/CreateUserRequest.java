@@ -10,18 +10,16 @@
  *
  */
 
-package cz.ememsoft.ufp.services;
+package cz.ememsoft.ufp.api;
 
-import cz.ememsoft.ufp.dto.UserDto;
-import org.springframework.stereotype.Service;
-
-@Service
-public class UserService {
-    public static UserDto getUserById(final long id) {
-        return null;
-    }
-
-    public void addUser(final UserDto user) {
-    }
+public class CreateUserRequest {
+    String userAccountName;
+    String userDisplayName;
+    String password;
+    String email;
+    String city;
+    String country;
+    String role;
+    String status;
 
 }
