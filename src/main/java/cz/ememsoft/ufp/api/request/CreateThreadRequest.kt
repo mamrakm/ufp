@@ -9,11 +9,8 @@
  * You should have received a copy of the GNU General Public License along with UFP. If not, see <https://www.gnu.org/licenses/>.
  *
  */
-package cz.ememsoft.ufp.repository
 
-import cz.ememsoft.ufp.entity.ThreadEntity
-import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.stereotype.Repository
+package cz.ememsoft.ufp.api.request
 
-@Repository
-interface ThreadRepository : JpaRepository<ThreadEntity?, Long?>
+class CreateThreadRequest {
+}

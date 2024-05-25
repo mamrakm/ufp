@@ -9,56 +9,44 @@
  * You should have received a copy of the GNU General Public License along with UFP. If not, see <https://www.gnu.org/licenses/>.
  *
  */
+package cz.ememsoft.ufp.controller
 
-package cz.ememsoft.ufp.controller;
-
-import cz.ememsoft.ufp.dto.ThreadEntityDto;
-import cz.ememsoft.ufp.services.ThreadService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cz.ememsoft.ufp.dto.ThreadEntityDto
+import cz.ememsoft.ufp.services.ThreadService
+import lombok.RequiredArgsConstructor
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/thread")
-public class ThreadController {
-    private final ThreadService threadService;
+class ThreadController {
+    private val threadService: ThreadService? = null
 
     @GetMapping("/{id}")
-    public void getThreads(@PathVariable final long id) {
-        final ThreadEntityDto threadEntityDto = threadService.findById(id);
-
+    fun getThreads(@PathVariable id: Long) {
+        val threadEntityDto = threadService!!.findById(id)
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<ThreadEntityDto> postThread(@RequestBody final ThreadEntityDto threadEntityDto) {
-        final var threadEntity = threadService.save(threadEntityDto);
-        System.out.println(threadEntity.toString());
+    @PostMapping("/{id}/post")
+    fun createPost(@RequestBody threadEntityDto: ThreadEntityDto): ResponseEntity<ThreadEntityDto> {
+        threadService!!.save(threadEntityDto)
         return ResponseEntity
-                .ok(threadEntityDto);
+            .ok(threadEntityDto)
     }
 
     @PutMapping("/{id}")
-    public void putMapping(@PathVariable final int id) {
+    fun putMapping(@PathVariable id: Int) {
         //Db.update(threadId.equals(id)
     }
 
     @PatchMapping("/{id}")
-    public void patchMapping(@PathVariable final int id) {
+    fun patchMapping(@PathVariable id: Int) {
         //Db.update(threadId.equals(id)
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMapping(@PathVariable final int id) {
+    fun deleteMapping(@PathVariable id: Int) {
         //Db.delete(threadId.equals(id)
     }
-
 }

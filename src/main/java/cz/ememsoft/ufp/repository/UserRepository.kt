@@ -9,14 +9,12 @@
  * You should have received a copy of the GNU General Public License along with UFP. If not, see <https://www.gnu.org/licenses/>.
  *
  */
+package cz.ememsoft.ufp.repository
 
-package cz.ememsoft.ufp.repository;
-
-import cz.ememsoft.ufp.entity.UserEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.stereotype.Repository;
+import cz.ememsoft.ufp.entity.UserEntity
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor
+import org.springframework.stereotype.Repository
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Long>, JpaSpecificationExecutor<UserEntity> {
-}
+interface UserRepository : JpaRepository<UserEntity?, Long?>, JpaSpecificationExecutor<UserEntity?>

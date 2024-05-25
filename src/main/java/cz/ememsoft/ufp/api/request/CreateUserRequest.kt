@@ -9,42 +9,41 @@
  * You should have received a copy of the GNU General Public License along with UFP. If not, see <https://www.gnu.org/licenses/>.
  *
  */
+package cz.ememsoft.ufp.api.request
 
-package cz.ememsoft.ufp.api.request;
+import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.NotBlank
+import org.aspectj.lang.annotation.RequiredTypes
+import java.time.LocalDate
+import java.time.LocalDateTime
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+@RequiredTypes
+data class CreateUserRequest(
+    @field:NotBlank
+    val userAccountName: String? = null,
 
-import java.time.LocalDate;
+    @field:NotBlank
+    val userDisplayName: String? = null,
 
-@Data
-public class CreateUserRequest {
-    @NotBlank
-    private String userAccountName;
+    @field:NotBlank
+    val password: String? = null,
 
-    @NotBlank
-    private String userDisplayName;
+    @field:NotBlank
+    @field:Email
+    val email: String? = null,
 
-    @NotBlank
-    private String password;
+    val city: String? = null,
 
-    @NotBlank
-    @Email
-    private String email;
+    val country: String? = null,
 
-    private String city;
+    val role: String? = null,
 
-    private String country;
+    val status: String? = null,
 
-    private String role;
+    val creationDate: LocalDate? = null,
 
-    private String status;
+    val creationTimestamp: LocalDateTime? = null,
 
-    private LocalDate creationDate;
+    val lastUpdatedTimestamp: LocalDateTime? = null
+)
 
-    private LocalDate creationTimestamp;
-
-    private LocalDate lastUpdatedTimestamp;
-
-}

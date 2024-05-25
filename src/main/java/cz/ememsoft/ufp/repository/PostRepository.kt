@@ -9,8 +9,6 @@
  * You should have received a copy of the GNU General Public License along with UFP. If not, see <https://www.gnu.org/licenses/>.
  *
  */
+package cz.ememsoft.ufp.repository
 
-package cz.ememsoft.ufp.repository;
-
-public class PostRepository {
-}
+class PostRepository
