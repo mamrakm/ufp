@@ -1,0 +1,115 @@
+openapi: "3.0.0"
+paths:
+  /threads/{boardId}:
+    get:
+      description: Get list of all threads in a certain board
+      operationId: id
+      tags:
+        - threads
+      parameters:
+        - name:
+          in: path
+          boardId: Id of a board
+      responses:
+        '200':
+          description: Successful response
+  /threads/{threadId}:
+    get:
+      description: Get a thread by id
+      operationId: Id of a thread
+      parameters:
+        - threadId
+      responses:
+        '200':
+          description: Successful response
+  /post/{postId}:
+    get:
+      description: Get post by Id
+      operationId: Id of a post
+      parameters:
+        - threadId
+      responses:
+        '200':
+          description: Successful response
+  /threads/{threadId}/posts:
+    get:
+      description: Get all posts in a given thread
+      operationId: Id of a thread
+      parameters:
+        - threadId
+      responses:
+        '200':
+          description: Successful response
+  /boards/{boardId}/threads:
+    get:
+      summary: List threads by board
+      operationId: listThreadsByBoard
+      parameters:
+        - in: path
+          name: boardId
+          required: true
+          schema:
+            type: string
+          description: The ID of the board
+      responses:
+        '200':
+          description: An array of threads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Thread'
+components:
+  schemas:
+    Board:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the board
+        title:
+          type: string
+          description: Display title of the board
+        description:
+          type: string
+          description: Description of the board
+    Thread:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the thread
+        title:
+          type: string
+          description: Title of the thread
+        boardId:
+          type: string
+          description: Identifier of the board the thread belongs to
+    Post:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the post
+        content:
+          type: string
+          description: Content of the post
+        threadId:
+          type: string
+          description: Identifier of the thread the post belongs to
+        timestamp:
+          type: string
+          format: date-time
+          description: Date and time the post was created
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
